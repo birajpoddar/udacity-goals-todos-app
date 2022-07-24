@@ -1,0 +1,15 @@
+.completed {
+	text-decoration: line-through;
+}
+
+.float-right {
+	float: right;
+}
+
+.margin-right-10 {
+	margin-right: 10px;
+}
+
+li {
+	list-style-type: none;
+}
