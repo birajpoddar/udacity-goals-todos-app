@@ -1,27 +1,3 @@
-// Store to save the state and its functions
-const createStore = (reducer) => {
-	let state;
-	let listeners = [];
-
-	const getState = () => state;
-
-	const subscribe = (listener) => {
-		listeners.push(listener);
-		return () => (listeners = listeners.filter((l) => l !== listener));
-	};
-
-	const dispatch = (action) => {
-		state = reducer(state, action);
-		listeners.forEach((listener) => listener());
-	};
-
-	return {
-		getState,
-		subscribe,
-		dispatch,
-	};
-};
-
 // Generate ID
 const generateId = () => {
 	return (
@@ -97,7 +73,6 @@ const todos = (state = [], action) => {
 };
 
 const goals = (state = [], action) => {
-	console.log(action);
 	switch (action.type) {
 		case ADD_GOAL:
 			return state.concat(action.goal);
@@ -108,34 +83,34 @@ const goals = (state = [], action) => {
 	}
 };
 
-const app = (state = {}, action) => {
-	return {
-		todos: todos(state.todos, action),
-		goals: goals(state.goals, action),
-	};
-};
-
-const store = createStore(app);
-console.log('State after store creation', store.getState());
-
-const unsub = store.subscribe(() =>
-	console.log('Current store Item(s)', store.getState())
+// Create the store
+const store = Redux.createStore(
+	Redux.combineReducers({
+		todos,
+		goals,
+	})
 );
 
+// Subscribe to changes
 store.subscribe(() => {
+	//
 	const todoList = document.getElementById('todos');
 	const goalList = document.getElementById('goals');
 
-	const { todos, goals } = store.getState();
-
+	// Reset the UI
 	todoList.innerHTML = '';
 	goalList.innerHTML = '';
 
+	// get the current state
+	const { todos, goals } = store.getState();
+
+	// Adds the todo(s) to the UI
 	todos.forEach((item) => {
 		const node = addTodoToDom(item);
 		todoList.appendChild(node);
 	});
 
+	// Adds the goal(s) to the UI
 	goals.forEach((item) => {
 		const node = AddGoalToDom(item);
 		goalList.appendChild(node);
@@ -151,6 +126,7 @@ const removeButton = (onClick) => {
 	//Add Event Listener for Removing todo
 	remove.addEventListener('click', onClick);
 
+	// Return the remove button
 	return remove;
 };
 
@@ -179,6 +155,7 @@ const addTodoToDom = (item) => {
 	node.appendChild(remove);
 	node.appendChild(text);
 
+	// Return the node
 	return node;
 };
 
@@ -198,20 +175,6 @@ const AddGoalToDom = (item) => {
 	node.appendChild(remove);
 	node.appendChild(text);
 
+	// Return the node
 	return node;
 };
-
-const goal1 = addGoalCreator('Learn React');
-store.dispatch(goal1);
-store.dispatch(addGoalCreator('Learn Redux'));
-//console.log('State after ADDING 1st Goal',store.getState());
-
-store.dispatch(removeGoalCreator(goal1.goal.id));
-//console.log('State after REMOVING 1st Goal',store.getState());
-
-const todo1 = addTodoCreator('generate stub');
-store.dispatch(todo1);
-store.dispatch(toggleTodoCreator(todo1.todo.id));
-// Reducer function for Goals
-
-store.dispatch(addTodoCreator('generate stub 2'));
