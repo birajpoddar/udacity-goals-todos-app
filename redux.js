@@ -83,16 +83,8 @@ const goals = (state = [], action) => {
 	}
 };
 
-// Create the store
-const store = Redux.createStore(
-	Redux.combineReducers({
-		todos,
-		goals,
-	})
-);
-
-// Check N Dispatch custom function
-const checkAndDispatch = (store, action) => {
+// Checker Middleware
+const checker = (store) => (next) => (action) => {
 	if (
 		action.type === ADD_TODO &&
 		action.todo.name.toLowerCase().includes('bitcoin')
@@ -107,8 +99,17 @@ const checkAndDispatch = (store, action) => {
 		return alert("Nope, that's a bad idea");
 	}
 
-	return store.dispatch(action);
+	return next(action);
 };
+
+// Create the store
+const store = Redux.createStore(
+	Redux.combineReducers({
+		todos,
+		goals,
+	}),
+	Redux.applyMiddleware(checker)
+);
 
 // Subscribe to changes
 store.subscribe(() => {
@@ -164,13 +165,11 @@ const addTodoToDom = (item) => {
 
 	// Add Event Listener for Toggling complete
 	node.addEventListener('click', () =>
-		checkAndDispatch(store, toggleTodoCreator(item.id))
+		store.dispatch(toggleTodoCreator(item.id))
 	);
 
 	// Get Remove button
-	const remove = removeButton(() =>
-		checkAndDispatch(store, removeTodoCreator(item.id))
-	);
+	const remove = removeButton(() => store.dispatch(removeTodoCreator(item.id)));
 
 	// Addd the child nodes to the parent
 	node.appendChild(remove);
@@ -190,9 +189,7 @@ const AddGoalToDom = (item) => {
 	node.classList.add('goal');
 
 	// Get Remove button
-	const remove = removeButton(() =>
-		checkAndDispatch(store, removeGoalCreator(item.id))
-	);
+	const remove = removeButton(() => store.dispatch(removeGoalCreator(item.id)));
 
 	/// Addd the child nodes to the parent
 	node.appendChild(remove);

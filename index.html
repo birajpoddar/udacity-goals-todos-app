@@ -32,13 +32,13 @@
 		<script>
 			document.getElementById('btnAddTodo').onclick = () => {
 				const newTodo = document.getElementById('txtNewTodo');
-				checkAndDispatch(store, addTodoCreator(newTodo.value));
+				store.dispatch(addTodoCreator(newTodo.value));
 				newTodo.value = '';
 			};
 
 			document.getElementById('btnAddGoal').onclick = () => {
 				const newGoal = document.getElementById('txtNewGoal');
-				checkAndDispatch(store, addGoalCreator(newGoal.value));
+				store.dispatch(addGoalCreator(newGoal.value));
 				newGoal.value = '';
 			};
 		</script>
