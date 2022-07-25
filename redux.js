@@ -102,13 +102,27 @@ const checker = (store) => (next) => (action) => {
 	return next(action);
 };
 
+// Logger Middleware
+const loggger = (store) => (next) => (action) => {
+	console.group(action.type);
+
+	console.log('Current State is', store.getState());
+	console.log('Current Action is', action);
+	const result = next(action);
+	console.log('State after Dispatch is', store.getState());
+
+	console.groupEnd();
+
+	return result;
+};
+
 // Create the store
 const store = Redux.createStore(
 	Redux.combineReducers({
 		todos,
 		goals,
 	}),
-	Redux.applyMiddleware(checker)
+	Redux.applyMiddleware(checker, loggger)
 );
 
 // Subscribe to changes
@@ -144,6 +158,7 @@ const removeButton = (onClick) => {
 	remove.classList.add('margin-right-10');
 
 	//Add Event Listener for Removing todo
+	remove.addEventListener('click', (e) => e.stopPropagation);
 	remove.addEventListener('click', onClick);
 
 	// Return the remove button
@@ -169,7 +184,10 @@ const addTodoToDom = (item) => {
 	);
 
 	// Get Remove button
-	const remove = removeButton(() => store.dispatch(removeTodoCreator(item.id)));
+	const remove = removeButton((e) => {
+		e.stopPropagation();
+		store.dispatch(removeTodoCreator(item.id));
+	});
 
 	// Addd the child nodes to the parent
 	node.appendChild(remove);
@@ -189,7 +207,10 @@ const AddGoalToDom = (item) => {
 	node.classList.add('goal');
 
 	// Get Remove button
-	const remove = removeButton(() => store.dispatch(removeGoalCreator(item.id)));
+	const remove = removeButton((e) => {
+		e.stopPropagation();
+		store.dispatch(removeGoalCreator(item.id));
+	});
 
 	/// Addd the child nodes to the parent
 	node.appendChild(remove);
