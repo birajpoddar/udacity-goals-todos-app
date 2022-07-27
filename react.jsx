@@ -1,7 +1,13 @@
 const List = (props) => {
 	return (
 		<ul>
-			<li>LIST</li>
+			{props.items &&
+				props.items.map((item) => (
+					<li key={item.id}>
+						<button className="margin-right-10">X</button>
+						<span>{item.name}</span>
+					</li>
+				))}
 		</ul>
 	);
 };
@@ -18,7 +24,12 @@ const Todos = (props) => {
 	return (
 		<div id="todo">
 			<h1>Todo List</h1>
-			<input type="text" ref={todoRef} placeholder="Add Todo" />
+			<input
+				type="text"
+				ref={todoRef}
+				placeholder="Add Todo"
+				className="margin-right-10"
+			/>
 			<button onClick={addTodo}>Add Todo</button>
 			<List items={props.todos} />
 		</div>
@@ -37,7 +48,12 @@ const Goals = (props) => {
 	return (
 		<div id="todo">
 			<h1>Goals</h1>
-			<input type="text" ref={goalRef} placeholder="Add Goal" />
+			<input
+				type="text"
+				ref={goalRef}
+				placeholder="Add Goal"
+				className="margin-right-10"
+			/>
 			<button onClick={addGoal}>Add Goal</button>
 			<List items={props.goals} />
 		</div>
