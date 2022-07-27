@@ -56,7 +56,7 @@ const App = (props) => {
 	return (
 		<React.StrictMode>
 			<Todos todos={state.todos} store={props.store} />
-			<Goals goals={stotre.goals} store={props.store} />
+			<Goals goals={state.goals} store={props.store} />
 		</React.StrictMode>
 	);
 };
