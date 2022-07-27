@@ -20,7 +20,7 @@ const Todos = (props) => {
 			<h1>Todo List</h1>
 			<input type="text" ref={todoRef} placeholder="Add Todo" />
 			<button onClick={addTodo}>Add Todo</button>
-			<List state={props.store.getState().todos} />
+			<List items={props.todos} />
 		</div>
 	);
 };
@@ -39,23 +39,27 @@ const Goals = (props) => {
 			<h1>Goals</h1>
 			<input type="text" ref={goalRef} placeholder="Add Goal" />
 			<button onClick={addGoal}>Add Goal</button>
-			<List state={props.store.getState().goals} />
+			<List items={props.goals} />
 		</div>
 	);
 };
 
 const App = (props) => {
+	const [state, setState] = React.useState(props.store.getState());
+
+	React.useEffect(() => {
+		props.store.subscribe(() => {
+			setState(props.store.getState());
+		});
+	});
+
 	return (
 		<React.StrictMode>
-			<Todos store={props.store} />
-			<Goals store={props.store} />
+			<Todos todos={state.todos} store={props.store} />
+			<Goals goals={stotre.goals} store={props.store} />
 		</React.StrictMode>
 	);
 };
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<App store={store} />);
-
-store.subscribe(() => {
-	root.render(<App store={store} />);
-});
