@@ -18,7 +18,9 @@ The app is an TODO/GOAL manager with Redux Store working as the Data Store with 
 
 1.  ~~Would be adding the redux implementation in next commit~~
 2.  ~~Adding Redux Middleware~~
-3.  Adding CSS to improve the UI
+3.  ~~Convert the app UI of the app to React~~
+4.  Bind React UI component with Redux Store
+5.  Adding CSS to improve the UI
 
 ## DEPLOYED APP
 
