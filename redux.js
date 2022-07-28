@@ -96,6 +96,15 @@ const goals = (state = [], action) => {
 	}
 };
 
+const loading = (state = true, action) => {
+	switch (action.type) {
+		case RECEIVE_DATA:
+			return false;
+		default:
+			return state;
+	}
+};
+
 // Checker Middleware
 const checker = (store) => (next) => (action) => {
 	if (
@@ -134,6 +143,7 @@ const store = Redux.createStore(
 	Redux.combineReducers({
 		todos,
 		goals,
+		loading,
 	}),
 	Redux.applyMiddleware(checker, loggger)
 );
