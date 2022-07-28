@@ -27,39 +27,7 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div name="addTodoForm" id="addTodoForm ">
-			<h1>Todo List</h1>
-			<input type="text" id="txtNewTodo" placeholder="Add Todo" />
-			<input type="button" id="btnAddTodo" value="Add Todo" />
-			<ul id="todos" style="cursor: pointer"></ul>
-		</div>
-
-		<div name="addGoalForm" id="addGoalForm">
-			<h1>Goals</h1>
-			<input type="text" id="txtNewGoal" placeholder="Add Goal" />
-			<input type="button" id="btnAddGoal" value="Add Goal" />
-			<ul id="goals" style="cursor: pointer"></ul>
-		</div>
-
-		<div id="Log"></div>
-
-		<hr />
-
 		<div id="app"></div>
-
-		<script>
-			document.getElementById('btnAddTodo').onclick = () => {
-				const newTodo = document.getElementById('txtNewTodo');
-				store.dispatch(addTodoCreator(newTodo.value));
-				newTodo.value = '';
-			};
-
-			document.getElementById('btnAddGoal').onclick = () => {
-				const newGoal = document.getElementById('txtNewGoal');
-				store.dispatch(addGoalCreator(newGoal.value));
-				newGoal.value = '';
-			};
-		</script>
 
 		<script type="text/babel" src="react.jsx"></script>
 	</body>
