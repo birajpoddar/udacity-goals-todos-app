@@ -4,7 +4,12 @@ const List = (props) => {
 			{props.items &&
 				props.items.map((item) => (
 					<li key={item.id}>
-						<button className="margin-right-10">X</button>
+						<button
+							onClick={() => props.remove(item)}
+							className="margin-right-10"
+						>
+							X
+						</button>
 						<span>{item.name}</span>
 					</li>
 				))}
@@ -21,6 +26,11 @@ const Todos = (props) => {
 		todoRef.current.value = '';
 	};
 
+	const removeItem = (todo) => {
+		console.log(todo);
+		props.store.dispatch(removeTodoCreator(todo.id));
+	};
+
 	return (
 		<div id="todo">
 			<h1>Todo List</h1>
@@ -31,7 +41,7 @@ const Todos = (props) => {
 				className="margin-right-10"
 			/>
 			<button onClick={addTodo}>Add Todo</button>
-			<List items={props.todos} />
+			<List remove={removeItem} items={props.todos} />
 		</div>
 	);
 };
@@ -45,8 +55,13 @@ const Goals = (props) => {
 		goalRef.current.value = '';
 	};
 
+	const removeItem = (goal) => {
+		console.log(goal);
+		props.store.dispatch(removeGoalCreator(goal.id));
+	};
+
 	return (
-		<div id="todo">
+		<div id="goal">
 			<h1>Goals</h1>
 			<input
 				type="text"
@@ -55,7 +70,7 @@ const Goals = (props) => {
 				className="margin-right-10"
 			/>
 			<button onClick={addGoal}>Add Goal</button>
-			<List items={props.goals} />
+			<List remove={removeItem} items={props.goals} />
 		</div>
 	);
 };
