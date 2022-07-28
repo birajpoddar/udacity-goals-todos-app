@@ -12,7 +12,7 @@ const List = (props) => {
 						</button>
 						<span
 							onClick={() => props.toggle && props.toggle(item)}
-							className={item.completed ? 'completed' : null}
+							className={item.complete ? 'completed' : null}
 							style={{
 								cursor: props.toggle ? 'pointer' : 'text',
 							}}
@@ -87,11 +87,21 @@ const Goals = (props) => {
 
 const App = (props) => {
 	const [state, setState] = React.useState(props.store.getState());
+	const [first, setFirst] = React.useState(true);
 
 	React.useEffect(() => {
 		props.store.subscribe(() => {
 			setState(props.store.getState());
 		});
+
+		if (first) {
+			Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
+				([todoList, goalList]) => {
+					setFirst(false);
+					props.store.dispatch(receiveDataAction(todoList, goalList));
+				}
+			);
+		}
 	});
 
 	return (
