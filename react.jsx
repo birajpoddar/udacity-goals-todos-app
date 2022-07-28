@@ -10,7 +10,12 @@ const List = (props) => {
 						>
 							X
 						</button>
-						<span>{item.name}</span>
+						<span
+							onClick={() => props.toggle && props.toggle(item)}
+							className={item.completed ? 'completed' : null}
+						>
+							{item.name}
+						</span>
 					</li>
 				))}
 		</ul>
@@ -27,8 +32,11 @@ const Todos = (props) => {
 	};
 
 	const removeItem = (todo) => {
-		console.log(todo);
 		props.store.dispatch(removeTodoCreator(todo.id));
+	};
+
+	const toggleItem = (todo) => {
+		props.store.dispatch(toggleTodoCreator(todo.id));
 	};
 
 	return (
@@ -41,7 +49,7 @@ const Todos = (props) => {
 				className="margin-right-10"
 			/>
 			<button onClick={addTodo}>Add Todo</button>
-			<List remove={removeItem} items={props.todos} />
+			<List toggle={toggleItem} remove={removeItem} items={props.todos} />
 		</div>
 	);
 };
@@ -56,7 +64,6 @@ const Goals = (props) => {
 	};
 
 	const removeItem = (goal) => {
-		console.log(goal);
 		props.store.dispatch(removeGoalCreator(goal.id));
 	};
 
