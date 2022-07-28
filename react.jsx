@@ -13,6 +13,9 @@ const List = (props) => {
 						<span
 							onClick={() => props.toggle && props.toggle(item)}
 							className={item.completed ? 'completed' : null}
+							style={{
+								cursor: props.toggle ? 'pointer' : 'text',
+							}}
 						>
 							{item.name}
 						</span>
