@@ -30,16 +30,34 @@ const Todos = (props) => {
 
 	const addTodo = (e) => {
 		e.preventDefault();
-		props.store.dispatch(addTodoCreator(todoRef.current.value));
+
+		const newTodo = addTodoCreator(todoRef.current.value);
+		props.store.dispatch(newTodo);
 		todoRef.current.value = '';
+
+		API.saveTodo(newTodo.todo.name).catch((err) => {
+			alert('Something went wrong, please try again');
+			console.log(newTodo);
+			removeItem(newTodo.todo);
+		});
 	};
 
 	const removeItem = (todo) => {
 		props.store.dispatch(removeTodoCreator(todo.id));
+
+		API.deleteTodo(todo.id).catch((err) => {
+			alert('Something went wrong, please try again');
+			props.store.dispatch(addTodoCreator(todo.name));
+		});
 	};
 
 	const toggleItem = (todo) => {
 		props.store.dispatch(toggleTodoCreator(todo.id));
+
+		API.saveTodoToggle(todo.id).catch((err) => {
+			alert('Something went wrong, please try again');
+			props.store.dispatch(toggleTodoCreator(todo.id));
+		});
 	};
 
 	return (
@@ -62,12 +80,25 @@ const Goals = (props) => {
 
 	const addGoal = (e) => {
 		e.preventDefault();
-		props.store.dispatch(addGoalCreator(goalRef.current.value));
+
+		const newGoal = addGoalCreator(goalRef.current.value);
+		props.store.dispatch(newGoal);
 		goalRef.current.value = '';
+
+		API.saveGoal(newGoal.goal.name).catch((err) => {
+			alert('Something went wrong, please try again');
+			console.log(newGoal);
+			removeItem(newGoal.goal);
+		});
 	};
 
 	const removeItem = (goal) => {
 		props.store.dispatch(removeGoalCreator(goal.id));
+
+		API.deleteGoal(goal.id).catch((err) => {
+			alert('Something went wrong, please try again');
+			props.store.dispatch(addGoalCreator(goal.name));
+		});
 	};
 
 	return (
