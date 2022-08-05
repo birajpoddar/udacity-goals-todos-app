@@ -17,42 +17,35 @@ const RECEIVE_DATA = 'RECEIVE_DATA';
 const addTodoCreator = (todo) => {
 	return {
 		type: ADD_TODO,
-		todo: {
-			id: generateId(),
-			name: todo,
-			completed: false,
-		},
+		todo,
 	};
 };
 
 const removeTodoCreator = (id) => {
 	return {
 		type: REMOVE_TODO,
-		id: id,
+		id,
 	};
 };
 
 const toggleTodoCreator = (id) => {
 	return {
 		type: TOGGLE_TODO,
-		id: id,
+		id,
 	};
 };
 
 const addGoalCreator = (goal) => {
 	return {
 		type: ADD_GOAL,
-		goal: {
-			id: generateId(),
-			name: goal,
-		},
+		goal,
 	};
 };
 
 const removeGoalCreator = (id) => {
 	return {
 		type: REMOVE_GOAL,
-		id: id,
+		id,
 	};
 };
 
@@ -145,5 +138,5 @@ const store = Redux.createStore(
 		goals,
 		loading,
 	}),
-	Redux.applyMiddleware(checker, loggger)
+	Redux.applyMiddleware(ReduxThunk, checker, loggger)
 );

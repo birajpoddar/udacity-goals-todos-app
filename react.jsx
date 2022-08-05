@@ -28,36 +28,19 @@ const List = (props) => {
 const Todos = (props) => {
 	const todoRef = React.createRef();
 
-	const addTodo = (e) => {
-		e.preventDefault();
+	const addTodo = () =>
+		props.store.dispatch(
+			handleAddTodoAction(
+				todoRef.current.value,
+				() => (todoRef.current.value = '')
+			)
+		);
 
-		API.saveTodo(todoRef.current.value)
-			.then(() => {
-				props.store.dispatch(addTodoCreator(todoRef.current.value));
-				todoRef.current.value = '';
-			})
-			.catch(() => {
-				alert('Something went wrong, please try again');
-			});
-	};
+	const removeItem = (todo) =>
+		props.store.dispatch(handleDeleteTodoAction(todo));
 
-	const removeItem = (todo) => {
-		props.store.dispatch(removeTodoCreator(todo.id));
-
-		API.deleteTodo(todo.id).catch((err) => {
-			alert('Something went wrong, please try again');
-			props.store.dispatch(addTodoCreator(todo.name));
-		});
-	};
-
-	const toggleItem = (todo) => {
-		props.store.dispatch(toggleTodoCreator(todo.id));
-
-		API.saveTodoToggle(todo.id).catch((err) => {
-			alert('Something went wrong, please try again');
-			props.store.dispatch(toggleTodoCreator(todo.id));
-		});
-	};
+	const toggleItem = (todo) =>
+		props.store.dispatch(handleToggleTodoAction(todo));
 
 	return (
 		<div id="todo">
@@ -74,30 +57,19 @@ const Todos = (props) => {
 	);
 };
 
-const Goals = (props) => {
+function Goals(props) {
 	const goalRef = React.createRef();
 
-	const addGoal = (e) => {
-		e.preventDefault();
+	const addGoal = () =>
+		props.store.dispatch(
+			handleAddGoalAction(
+				goalRef.current.value,
+				() => (goalRef.current.value = '')
+			)
+		);
 
-		API.saveGoal(goalRef.current.value)
-			.then(() => {
-				props.store.dispatch(addGoalCreator(goalRef.current.value));
-				goalRef.current.value = '';
-			})
-			.catch(() => {
-				alert('Something went wrong, please try again');
-			});
-	};
-
-	const removeItem = (goal) => {
-		props.store.dispatch(removeGoalCreator(goal.id));
-
-		API.deleteGoal(goal.id).catch((err) => {
-			alert('Something went wrong, please try again');
-			props.store.dispatch(addGoalCreator(goal.name));
-		});
-	};
+	const removeItem = (goal) =>
+		props.store.dispatch(handleDeleteGoalAction(goal));
 
 	return (
 		<div id="goal">
@@ -112,23 +84,17 @@ const Goals = (props) => {
 			<List remove={removeItem} items={props.goals} />
 		</div>
 	);
-};
+}
 
 const App = (props) => {
 	const [state, setState] = React.useState(props.store.getState());
 
 	React.useEffect(() => {
+		props.store.dispatch(handeInitialDataLoadAction(state.loading));
+
 		props.store.subscribe(() => {
 			setState(props.store.getState());
 		});
-
-		if (state.loading) {
-			Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
-				([todoList, goalList]) => {
-					props.store.dispatch(receiveDataAction(todoList, goalList));
-				}
-			);
-		}
 	});
 
 	if (state.loading) {
