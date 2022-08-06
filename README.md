@@ -21,7 +21,8 @@ The app is an TODO/GOAL manager with Redux Store working as the Data Store with 
 3. ~~Convert the app UI of the app to React~~
 4. ~~Bind React UI component with Redux Store~~
 5. ~~Async data store connectivity with Database/API~~
-6. Adding CSS to improve the UI
+6. Adding Contexts for passing data
+7. Adding CSS to improve the UI
 
 ## DEPLOYED APP
 
