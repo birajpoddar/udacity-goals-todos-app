@@ -111,12 +111,12 @@ const App = (props) => {
 	const [state, setState] = React.useState(props.store.getState());
 
 	React.useEffect(() => {
-		props.store.dispatch(handeInitialDataLoadAction(state.loading));
+		props.store.dispatch(handeInitialDataLoadAction());
 
 		props.store.subscribe(() => {
 			setState(props.store.getState());
 		});
-	});
+	}, []);
 
 	if (state.loading) {
 		return <h3>Loading...</h3>;

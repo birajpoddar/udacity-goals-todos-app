@@ -60,14 +60,12 @@ const handleDeleteGoalAction = (goal) => {
 };
 
 // Initial Data Load
-const handeInitialDataLoadAction = (flag) => {
+const handeInitialDataLoadAction = () => {
 	return (dispatch) => {
-		if (flag) {
-			Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
-				([todoList, goalList]) => {
-					dispatch(receiveDataAction(todoList, goalList));
-				}
-			);
-		}
+		Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
+			([todoList, goalList]) => {
+				dispatch(receiveDataAction(todoList, goalList));
+			}
+		);
 	};
 };
