@@ -55,17 +55,9 @@ const Todos = (props) => {
 	);
 };
 
-const ConnectedTodos = (props) => {
-	return (
-		<Context.Consumer>
-			{(store) => {
-				const { todos } = store.getState();
-
-				return <Todos dispatch={store.dispatch} todos={todos} />;
-			}}
-		</Context.Consumer>
-	);
-};
+const ConnectedTodos = ReactRedux.connect((state) => ({ todos: state.todos }))(
+	Todos
+);
 
 function Goals(props) {
 	const goalRef = React.createRef();
@@ -95,30 +87,16 @@ function Goals(props) {
 	);
 }
 
-const ConnectedGoals = (props) => {
-	return (
-		<Context.Consumer>
-			{(store) => {
-				const { goals } = store.getState();
-
-				return <Goals dispatch={store.dispatch} goals={goals} />;
-			}}
-		</Context.Consumer>
-	);
-};
+const ConnectedGoals = ReactRedux.connect((state) => ({ goals: state.goals }))(
+	Goals
+);
 
 const App = (props) => {
-	const [state, setState] = React.useState(props.store.getState());
-
 	React.useEffect(() => {
-		props.store.dispatch(handeInitialDataLoadAction());
-
-		props.store.subscribe(() => {
-			setState(props.store.getState());
-		});
+		props.dispatch(handeInitialDataLoadAction());
 	}, []);
 
-	if (state.loading) {
+	if (props.loading) {
 		return <h3>Loading...</h3>;
 	}
 
@@ -130,27 +108,13 @@ const App = (props) => {
 	);
 };
 
-const ConnectedApp = () => {
-	return (
-		<Context.Consumer>
-			{(store) => {
-				return <App store={store} />;
-			}}
-		</Context.Consumer>
-	);
-};
-
-const Context = React.createContext();
-
-const Provider = (props) => {
-	return (
-		<Context.Provider value={props.store}>{props.children}</Context.Provider>
-	);
-};
+const ConnectedApp = ReactRedux.connect((state) => ({
+	loading: state.loading,
+}))(App);
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
-	<Provider store={store}>
+	<ReactRedux.Provider store={store}>
 		<ConnectedApp />
-	</Provider>
+	</ReactRedux.Provider>
 );

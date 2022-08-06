@@ -10,6 +10,8 @@ React have been added along the way in this app development along with Async Cal
 
 Redux Thunk middleware have been implemented for Async calls. [(3)](https://github.com/birajpoddar/udacity-redux-basics/tree/3-react-redux-thunk)
 
+React-Redux library added for simplifying the state management between React and Redux. [(4)](https://github.com/birajpoddar/udacity-redux-basics/tree/4-react-redux-binding)
+
 ## DESCRIPTION
 
 The app is an TODO/GOAL manager with Redux Store working as the Data Store with following features
@@ -28,8 +30,9 @@ The app is an TODO/GOAL manager with Redux Store working as the Data Store with 
 4. ~~Bind React UI component with Redux Store~~
 5. ~~Async data store connectivity with Database/API~~
 6. ~~Adding Contexts for passing data~~
-7. Adding React-Redux Library for simplifying interactions between React & Redux
-8. Adding CSS to improve the UI
+7. ~~Adding React-Redux Library for simplifying interactions between React & Redux~~
+8. Create the app using create-react-app
+9. Adding CSS to improve the UI
 
 ## DEPLOYED APP
 
