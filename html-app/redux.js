@@ -6,6 +6,7 @@ const generateId = () => {
 };
 
 // Action Type variables
+// Copied
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
 const TOGGLE_TODO = 'TOGGLE_TODO';
@@ -14,6 +15,7 @@ const REMOVE_GOAL = 'REMOVE_GOAL';
 const RECEIVE_DATA = 'RECEIVE_DATA';
 
 // Action Creators
+// Copied
 const addTodoCreator = (todo) => {
 	return {
 		type: ADD_TODO,
@@ -21,6 +23,7 @@ const addTodoCreator = (todo) => {
 	};
 };
 
+// Copied
 const removeTodoCreator = (id) => {
 	return {
 		type: REMOVE_TODO,
@@ -28,6 +31,7 @@ const removeTodoCreator = (id) => {
 	};
 };
 
+// Copied
 const toggleTodoCreator = (id) => {
 	return {
 		type: TOGGLE_TODO,
@@ -35,6 +39,7 @@ const toggleTodoCreator = (id) => {
 	};
 };
 
+// Copied
 const addGoalCreator = (goal) => {
 	return {
 		type: ADD_GOAL,
@@ -42,6 +47,7 @@ const addGoalCreator = (goal) => {
 	};
 };
 
+// Copied
 const removeGoalCreator = (id) => {
 	return {
 		type: REMOVE_GOAL,
@@ -49,6 +55,7 @@ const removeGoalCreator = (id) => {
 	};
 };
 
+// Copied
 const receiveDataAction = (todos, goals) => {
 	return {
 		type: RECEIVE_DATA,
@@ -58,6 +65,7 @@ const receiveDataAction = (todos, goals) => {
 };
 
 // Reducer functions
+// Copied
 const todos = (state = [], action) => {
 	switch (action.type) {
 		case ADD_TODO:
@@ -76,6 +84,7 @@ const todos = (state = [], action) => {
 	}
 };
 
+// Copied
 const goals = (state = [], action) => {
 	switch (action.type) {
 		case ADD_GOAL:
@@ -89,6 +98,7 @@ const goals = (state = [], action) => {
 	}
 };
 
+// Copied
 const loading = (state = true, action) => {
 	switch (action.type) {
 		case RECEIVE_DATA:
@@ -133,6 +143,7 @@ const loggger = (store) => (next) => (action) => {
 
 // Create the store
 const store = Redux.createStore(
+	// Copied
 	Redux.combineReducers({
 		todos,
 		goals,
