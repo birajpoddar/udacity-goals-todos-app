@@ -1,7 +1,7 @@
 # [udacity-redux-basics](https://redux-todo-goal.netlify.app/)
 
 [![Netlify](https://img.shields.io/netlify/c63cc15f-21b5-4818-a1d3-3cf60359b6e9?logo=netlify&logoColor=success&style=for-the-badge)](https://app.netlify.com/sites/redux-todo-goal/deploys)
-[![HTML App](https://img.shields.io/website?label=app&logo=netlify&logoColor=green&style=for-the-badge&up_color=green&url=https%3A%2F%2Fredux-todo-goal.netlify.app%2F)](https://redux-todo-goal.netlify.app/html-app)
+[![HTML App](https://img.shields.io/website?label=html%20app&logo=netlify&logoColor=green&style=for-the-badge&up_color=green&url=https%3A%2F%2Fredux-todo-goal.netlify.app%2Fhtml-app%2F)](https://redux-todo-goal.netlify.app/html-app)
 [![Issues](https://img.shields.io/github/issues/birajpoddar/udacity-redux-basics?logo=github&logoColor=yellow&style=for-the-badge)](https://github.com/birajpoddar/udacity-redux-basics/issues)
 
 This is a basic implementation of Redux Store with State, Actions and Reducers. [(1)](https://github.com/birajpoddar/udacity-redux-basics/tree/1-html-redux)
