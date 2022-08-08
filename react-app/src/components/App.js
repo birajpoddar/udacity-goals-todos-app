@@ -5,7 +5,7 @@ import ConnectedTodos from './Todos';
 import ConnectedGoals from './Goals';
 
 const App = (props) => {
-	React.useEffect(() => {
+	React.useEffect((props) => {
 		props.dispatch(handeInitialData());
 	}, []);
 
