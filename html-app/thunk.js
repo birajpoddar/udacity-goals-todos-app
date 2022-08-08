@@ -1,4 +1,5 @@
 // Todo Thunks
+// Copied
 const handleAddTodoAction = (name, callback) => {
 	return (dispatch) => {
 		API.saveTodo(name)
@@ -12,6 +13,7 @@ const handleAddTodoAction = (name, callback) => {
 	};
 };
 
+// Copied
 const handleDeleteTodoAction = (todo) => {
 	return (dispatch) => {
 		dispatch(removeTodoCreator(todo.id));
@@ -23,6 +25,7 @@ const handleDeleteTodoAction = (todo) => {
 	};
 };
 
+// Copied
 const handleToggleTodoAction = (todo) => {
 	return (dispatch) => {
 		dispatch(toggleTodoCreator(todo.id));
@@ -35,6 +38,7 @@ const handleToggleTodoAction = (todo) => {
 };
 
 // Goal Thunks
+// Copied
 const handleAddGoalAction = (name, callback) => {
 	return (dispatch) => {
 		API.saveGoal(name)
@@ -48,6 +52,7 @@ const handleAddGoalAction = (name, callback) => {
 	};
 };
 
+// Copied
 const handleDeleteGoalAction = (goal) => {
 	return (dispatch) => {
 		dispatch(removeGoalCreator(goal.id));
@@ -60,6 +65,7 @@ const handleDeleteGoalAction = (goal) => {
 };
 
 // Initial Data Load
+// Copied
 const handeInitialDataLoadAction = () => {
 	return (dispatch) => {
 		Promise.all([API.fetchTodos(), API.fetchGoals()]).then(

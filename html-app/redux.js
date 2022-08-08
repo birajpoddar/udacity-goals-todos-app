@@ -109,6 +109,7 @@ const loading = (state = true, action) => {
 };
 
 // Checker Middleware
+// Copied
 const checker = (store) => (next) => (action) => {
 	if (
 		action.type === ADD_TODO &&
@@ -128,6 +129,7 @@ const checker = (store) => (next) => (action) => {
 };
 
 // Logger Middleware
+// Copied
 const loggger = (store) => (next) => (action) => {
 	console.group(action.type);
 
@@ -149,5 +151,6 @@ const store = Redux.createStore(
 		goals,
 		loading,
 	}),
+	// Copied
 	Redux.applyMiddleware(ReduxThunk, checker, loggger)
 );
