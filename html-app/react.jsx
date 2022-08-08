@@ -1,3 +1,4 @@
+// Copied
 const List = (props) => {
 	return (
 		<ul>
@@ -25,6 +26,7 @@ const List = (props) => {
 	);
 };
 
+// Copied
 const Todos = (props) => {
 	const todoRef = React.createRef();
 
@@ -55,11 +57,13 @@ const Todos = (props) => {
 	);
 };
 
+// Copied
 const ConnectedTodos = ReactRedux.connect((state) => ({ todos: state.todos }))(
 	Todos
 );
 
-function Goals(props) {
+// Copied
+const Goals = (props) => {
 	const goalRef = React.createRef();
 
 	const addGoal = () =>
@@ -85,12 +89,14 @@ function Goals(props) {
 			<List remove={removeItem} items={props.goals} />
 		</div>
 	);
-}
+};
 
+// Copied
 const ConnectedGoals = ReactRedux.connect((state) => ({ goals: state.goals }))(
 	Goals
 );
 
+// Copied
 const App = (props) => {
 	React.useEffect(() => {
 		props.dispatch(handeInitialDataLoadAction());
@@ -108,10 +114,12 @@ const App = (props) => {
 	);
 };
 
+// Copied
 const ConnectedApp = ReactRedux.connect((state) => ({
 	loading: state.loading,
 }))(App);
 
+// Copied
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
 	<ReactRedux.Provider store={store}>

@@ -1,4 +1,4 @@
-export const loggger = (store) => (next) => (action) => {
+const loggger = (store) => (next) => (action) => {
 	console.group(action.type);
 
 	console.log('State before Dispatch is', store.getState());
@@ -10,3 +10,5 @@ export const loggger = (store) => (next) => (action) => {
 
 	return result;
 };
+
+export default loggger;

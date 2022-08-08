@@ -1,10 +1,3 @@
-// Generate ID
-const generateId = () => {
-	return (
-		Math.random().toString(36).substring(2) + new Date().getTime().toString(36)
-	);
-};
-
 // Action Type variables
 // Copied
 const ADD_TODO = 'ADD_TODO';
@@ -144,6 +137,7 @@ const loggger = (store) => (next) => (action) => {
 };
 
 // Create the store
+// Copied
 const store = Redux.createStore(
 	// Copied
 	Redux.combineReducers({

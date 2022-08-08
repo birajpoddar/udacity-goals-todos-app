@@ -11,7 +11,7 @@ const receiveData = (todos, goals) => {
 };
 
 // Initial Data Load
-export const handeInitialDataLoad = () => {
+export const handeInitialData = () => {
 	return (dispatch) => {
 		Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
 			([todoList, goalList]) => {
