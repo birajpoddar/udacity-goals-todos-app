@@ -2,8 +2,8 @@
 const handleAddTodoAction = (name, callback) => {
 	return (dispatch) => {
 		API.saveTodo(name)
-			.then(() => {
-				dispatch(addTodoCreator({ id: generateId(), complete: false, name }));
+			.then((todo) => {
+				dispatch(addTodoCreator(todo));
 				callback();
 			})
 			.catch(() => {
@@ -38,8 +38,8 @@ const handleToggleTodoAction = (todo) => {
 const handleAddGoalAction = (name, callback) => {
 	return (dispatch) => {
 		API.saveGoal(name)
-			.then(() => {
-				dispatch(addGoalCreator({ id: generateId(), name }));
+			.then((goal) => {
+				dispatch(addGoalCreator(goal));
 				callback();
 			})
 			.catch(() => {
