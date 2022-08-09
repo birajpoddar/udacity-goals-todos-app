@@ -5,9 +5,9 @@ import ConnectedTodos from './Todos';
 import ConnectedGoals from './Goals';
 
 const App = (props) => {
-	React.useEffect((props) => {
+	React.useEffect(() => {
 		props.dispatch(handeInitialData());
-	}, []);
+	}, [props]);
 
 	if (props.loading) {
 		return <h3>Loading...</h3>;
