@@ -21,7 +21,7 @@ const Todos = (props) => {
 
 	return (
 		<div id="todo">
-			<h1>Todo List</h1>
+			<h2>Todos</h2>
 			<input
 				type="text"
 				ref={todoRef}

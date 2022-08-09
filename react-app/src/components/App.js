@@ -15,6 +15,8 @@ const App = (props) => {
 
 	return (
 		<div>
+			<h2>React Todo/Goal Manager</h2>
+			<hr />
 			<ConnectedTodos />
 			<ConnectedGoals />
 		</div>

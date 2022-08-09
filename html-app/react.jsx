@@ -44,7 +44,7 @@ const Todos = (props) => {
 
 	return (
 		<div id="todo">
-			<h1>Todo List</h1>
+			<h2>Todos</h2>
 			<input
 				type="text"
 				ref={todoRef}
@@ -78,7 +78,7 @@ const Goals = (props) => {
 
 	return (
 		<div id="goal">
-			<h1>Goals</h1>
+			<h2>Goals</h2>
 			<input
 				type="text"
 				ref={goalRef}
@@ -108,6 +108,8 @@ const App = (props) => {
 
 	return (
 		<React.StrictMode>
+			<h2>HTML Todo/Goal Manager</h2>
+			<hr />
 			<ConnectedTodos />
 			<ConnectedGoals />
 		</React.StrictMode>

@@ -15,7 +15,7 @@ const Goals = (props) => {
 
 	return (
 		<div id="goal">
-			<h1>Goals</h1>
+			<h2>Goals</h2>
 			<input
 				type="text"
 				ref={goalRef}

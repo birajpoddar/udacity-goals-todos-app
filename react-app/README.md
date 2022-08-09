@@ -1,8 +1,25 @@
-# Getting Started with Create React App
+# React Todo/Goal App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React App](https://img.shields.io/website?label=react%20app&logo=netlify&logoColor=green&style=for-the-badge&up_color=green&url=https%3A%2F%2Freact-todos.delabs.co.in)](https://react-todos.delabs.co.in)
 
-## Available Scripts
+## DESCRIPTION
+
+A simple React app for managing Todos and Goals. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The Todos can be added, removed or toggled to indicate COMPLETE?INCOMPLETE. Tha Goals on the other hand can only be added or removed.
+
+## NPM MODULES USED
+
+1. **Redux** - State Management for the app
+2. **React** - React Library for UI Management
+3. **React DOM** - Library for interacting with DOM elements
+4. **Babel** - Transpiling JSX/ES6 syntax on the fly
+5. **Redux Thunk** - Middleware for using async Actions
+6. **React-Redux** - Common React & Redux bindings Library
+7. **Goals Todos API** - Mocked API for Todos/Goals
+8. **Jest** - Used to test the app
+
+## AVAILABLE NPM SCRIPTS
 
 In the project directory, you can run:
 
@@ -38,33 +55,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
