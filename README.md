@@ -29,7 +29,7 @@ The app is an TODO/GOAL manager with Redux Store working as the Data Store with 
 2. [Addition of React Library in HTML app development along with Async Calls to Mocked API.](https://github.com/birajpoddar/udacity-goals-todos-app/tree/2-react-redux)
 3. [Redux Thunk middleware have been implemented for Async calls in HTML App.](https://github.com/birajpoddar/udacity-goals-todos-app/tree/3-react-redux-thunk)
 4. [React-Redux library added for simplifying the state management between React and Redux in HTML App.](https://github.com/birajpoddar/udacity-goals-todos-app/tree/4-react-redux-binding)
-5. [React App scaffolded and components/bindings constructed for respective items to create a fully functioning React-Redux app](https://github.com/birajpoddar/udacity-goals-todos-app/tree/5-react-redux-app)
+5. [React App scaffolded and components/bindings constructed to create a fully-functioning React-Redux app](https://github.com/birajpoddar/udacity-goals-todos-app/tree/5-react-redux-app)
 
 ## TODO
 
